@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -49,7 +50,16 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     result
                         .onSuccess { text -> showModeSelectionDialog(text) }
-                        .onFailure { error -> /* TODO */ }
+                        .onFailure { _ -> Toast
+                            .makeText(
+                                this,
+                                getString(
+                                    R.string.error_while_downloading_file,
+                                    url
+                                ),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                 }
             }
         }
