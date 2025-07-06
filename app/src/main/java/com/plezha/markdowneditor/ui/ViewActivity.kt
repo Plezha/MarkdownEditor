@@ -9,8 +9,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.plezha.markdowneditor.AppContainer
 import com.plezha.markdowneditor.Downloader
-import com.plezha.markdowneditor.ImageCache
+import com.plezha.markdowneditor.MarkdownEditorApplication
 import com.plezha.markdowneditor.MarkdownParser
 import com.plezha.markdowneditor.R
 import com.plezha.markdowneditor.SimpleMarkdownParser
@@ -18,7 +19,8 @@ import com.plezha.markdowneditor.SimpleMarkdownParser
 class ViewActivity: AppCompatActivity() {
     private var currentMarkdownText = ""
 
-    private val downloader = Downloader()
+    private lateinit var appContainer: AppContainer
+    private lateinit var downloader: Downloader
     private val parser: MarkdownParser = SimpleMarkdownParser()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,9 @@ class ViewActivity: AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        appContainer = (application as MarkdownEditorApplication).appContainer
+        downloader = appContainer.downloader
 
         findViewById<FloatingActionButton>(R.id.edit_mode_fab).setOnClickListener {
             val intent = Intent(this, EditActivity::class.java).apply {
@@ -45,7 +50,7 @@ class ViewActivity: AppCompatActivity() {
 
     private fun renderMarkdown() {
         val elements = parser.parse(currentMarkdownText)
-        val imageCache = ImageCache(this)
+        val imageCache = appContainer.imageCache
         val markdownAdapter = MarkdownViewAdapter(elements, imageCache, downloader)
 
         findViewById<RecyclerView>(R.id.markdown_rv).apply {

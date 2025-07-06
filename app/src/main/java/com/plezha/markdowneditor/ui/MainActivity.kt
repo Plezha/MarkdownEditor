@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.plezha.markdowneditor.Downloader
+import com.plezha.markdowneditor.MarkdownEditorApplication
 import com.plezha.markdowneditor.R
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private val downloader = Downloader()
+    private lateinit var downloader: Downloader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        downloader = (application as MarkdownEditorApplication).appContainer.downloader
 
         val buttonSelectFile = findViewById<Button>(R.id.select_file_button)
         val buttonLoadFile = findViewById<Button>(R.id.load_file_button)
