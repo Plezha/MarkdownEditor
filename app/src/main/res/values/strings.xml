@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Markdown Editor</string>
+    <string name="url_hint">Url…</string>
+    <string name="load_file">Load File</string>
+    <string name="select_file">Select File</string>
+    <string name="error_while_downloading_image">Error while downloading image %1$s</string>
+</resources>
