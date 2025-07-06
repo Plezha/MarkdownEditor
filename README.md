@@ -13,12 +13,15 @@
 ### Экран просмотра Markdown
  - Отображает отформатированный документ.
  - Отображение осуществляется через **View-компоненты**.
- - Все элементы Markdown отображаются "нативно", являясь Android View.
+ - Все элементы Markdown отображаются "нативно", являясь Android View внутри RecyclerView.
+<img src="https://github.com/user-attachments/assets/9da7415e-91e3-404d-a994-faee66b15ea1" alt="drawing" width="300"/>
+
 
 ### Экран редактирования
-
 - Текстовое поле с возможностью редактирования содержимого Markdown.
 - Кнопка "Сохранить" возвращает к просмотру.
+<img src="https://github.com/user-attachments/assets/211f9b27-5e91-46a3-a13e-0c77f3d08790" alt="drawing" width="300"/>
+
 
 ### Markdown-поддержка
 
