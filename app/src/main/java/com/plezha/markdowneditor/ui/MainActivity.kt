@@ -57,8 +57,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun showModeSelectionDialog(markdownText: String) {
         AlertDialog.Builder(this)
-            .setTitle("Выберите режим")
-            .setItems(arrayOf("Просмотр", "Редактирование")) { _, which ->
+            .setTitle(getString(R.string.dialog_choose_mode))
+            .setItems(
+                arrayOf(
+                    getString(R.string.dialog_view),
+                    getString(R.string.dialog_edit)
+                )
+            ) { _, which ->
                 when (which) {
                     0 -> {
                         val intent = Intent(this, ViewActivity::class.java).apply {
@@ -66,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         startActivity(intent)
                     }
+
                     1 -> {
                         val intent = Intent(this, EditActivity::class.java).apply {
                             putExtra("markdown_text", markdownText)

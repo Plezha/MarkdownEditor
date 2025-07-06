@@ -4,4 +4,7 @@
     <string name="load_file">Load File</string>
     <string name="select_file">Select File</string>
     <string name="error_while_downloading_image">Error while downloading image %1$s</string>
+    <string name="dialog_choose_mode">Choose mode</string>
+    <string name="dialog_view">View Document</string>
+    <string name="dialog_edit">Edit Document</string>
 </resources>
